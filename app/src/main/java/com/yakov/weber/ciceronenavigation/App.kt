@@ -3,6 +3,7 @@ package com.yakov.weber.ciceronenavigation
 import android.app.Application
 import com.yakov.weber.ciceronenavigation.toothpick.DI
 import com.yakov.weber.ciceronenavigation.toothpick.module.AppModule
+import timber.log.Timber
 import toothpick.Toothpick
 import toothpick.config.Module
 import toothpick.configuration.Configuration
@@ -18,8 +19,15 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initTimber()
         initToothpick()
         initScopes()
+    }
+
+    private fun initTimber() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
     private fun initScopes(){

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CiceroneNavigation</string>
+    <string name="new_action">new action</string>
+    <string name="ok">ok</string>
+    <string name="activity_one">activity one</string>
+    <string name="activity_two">activity two</string>
 </resources>
