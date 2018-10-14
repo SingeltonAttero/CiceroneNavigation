@@ -4,4 +4,6 @@
     <string name="ok">ok</string>
     <string name="activity_one">activity one</string>
     <string name="activity_two">activity two</string>
+    <string name="fragment_action">fragment action start</string>
+    <string name="fragment_cancel">fragment_cancel</string>
 </resources>

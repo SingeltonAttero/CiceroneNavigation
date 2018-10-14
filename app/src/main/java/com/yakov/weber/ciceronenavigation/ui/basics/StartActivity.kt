@@ -16,6 +16,9 @@ import com.yakov.weber.ciceronenavigation.ui.global.BaseActivity
 import com.yakov.weber.ciceronenavigation.ui.mock.OneActivity
 import com.yakov.weber.ciceronenavigation.ui.mock.TwoActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.android.pure.AppNavigator
+import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import toothpick.Toothpick
 
 /**
@@ -24,6 +27,8 @@ import toothpick.Toothpick
  * project CiceroneNavigation */
 
 class StartActivity : BaseActivity() , StartView {
+    override val navigator: Navigator
+        get() = object : SupportAppNavigator(this,0){}
 
     companion object {
         fun newStartActivity(context: Context):Intent = Intent(context,StartActivity::class.java).apply {
@@ -43,8 +48,9 @@ class StartActivity : BaseActivity() , StartView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        button_activity_one.setOnClickListener { startActivity(Screens.getFlowIntent(this,Screens.ONE_ACTIVITY)) }
-        button_activity_two.setOnClickListener { startActivity(Screens.getFlowIntent(this,Screens.TWO_ACTIVITY)) }
+        button_activity_one.setOnClickListener { startActivity(Screens.OneScreen().getActivityIntent(this)) }
+        button_activity_two.setOnClickListener { startActivity(Screens.TwoScreen().getActivityIntent(this)) }
+
     }
 
     override fun showMessage(message: String) {

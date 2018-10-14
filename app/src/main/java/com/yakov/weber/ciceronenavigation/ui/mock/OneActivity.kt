@@ -3,6 +3,7 @@ package com.yakov.weber.ciceronenavigation.ui.mock
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -13,6 +14,10 @@ import com.yakov.weber.ciceronenavigation.toothpick.DI
 import com.yakov.weber.ciceronenavigation.ui.Screens
 import com.yakov.weber.ciceronenavigation.ui.global.BaseActivity
 import kotlinx.android.synthetic.main.activity_one.*
+import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import ru.terrakok.cicerone.android.support.SupportAppScreen
+import ru.terrakok.cicerone.commands.Command
 import toothpick.Toothpick
 
 /**
@@ -21,6 +26,13 @@ import toothpick.Toothpick
  * project CiceroneNavigation */
 
 class OneActivity : BaseActivity(), OneView {
+    override val navigator: Navigator
+        get() = object : SupportAppNavigator(this,R.id.fragment_container_one){
+            override fun createFragment(screen: SupportAppScreen): Fragment = when (screen) {
+                is Screens.OneScreen -> screen.fragment
+                else -> { throw IllegalArgumentException("нет такого фрагмента $screen")}
+            }
+        }
 
     companion object {
         fun newStartActivity(context: Context): Intent = Intent(context, OneActivity::class.java).apply {
@@ -42,7 +54,7 @@ class OneActivity : BaseActivity(), OneView {
         super.onCreate(savedInstanceState)
         action_button_one.setOnClickListener {
             presenter.toNewAction()
-            startActivity(Screens.getFlowIntent(this, Screens.START_ACTIVITY))
+            startActivity(Screens.StartScreen().getActivityIntent(this))
         }
     }
 

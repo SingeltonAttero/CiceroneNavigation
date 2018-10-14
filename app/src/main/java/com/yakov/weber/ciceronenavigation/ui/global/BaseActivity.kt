@@ -1,8 +1,12 @@
 package com.yakov.weber.ciceronenavigation.ui.global
 
 import android.os.Bundle
-import android.support.annotation.LayoutRes
 import com.arellomobile.mvp.MvpAppCompatActivity
+import com.yakov.weber.ciceronenavigation.toothpick.DI
+import ru.terrakok.cicerone.Navigator
+import ru.terrakok.cicerone.NavigatorHolder
+import toothpick.Toothpick
+import javax.inject.Inject
 
 /**
  * Created on 10.10.18
@@ -13,8 +17,24 @@ abstract class BaseActivity : MvpAppCompatActivity() {
 
     abstract val layout:Int
 
+    abstract val navigator:Navigator
+
+    @Inject
+    lateinit var navigatorHolder:NavigatorHolder
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layout)
+        Toothpick.inject(this,Toothpick.openScope(DI.APP_SCOPE))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        navigatorHolder.removeNavigator()
     }
 }

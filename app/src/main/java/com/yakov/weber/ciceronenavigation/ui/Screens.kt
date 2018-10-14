@@ -1,19 +1,43 @@
 package com.yakov.weber.ciceronenavigation.ui
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.app.Fragment
 import com.yakov.weber.ciceronenavigation.ui.basics.StartActivity
 import com.yakov.weber.ciceronenavigation.ui.mock.OneActivity
+import com.yakov.weber.ciceronenavigation.ui.mock.OneFragment
 import com.yakov.weber.ciceronenavigation.ui.mock.TwoActivity
+import com.yakov.weber.ciceronenavigation.ui.mock.TwoFragment
+import ru.terrakok.cicerone.Screen
+import ru.terrakok.cicerone.android.support.SupportAppScreen
 
-object Screens {
-    const val START_ACTIVITY = "start activity"
-    const val ONE_ACTIVITY = "one activity"
-    const val TWO_ACTIVITY = "two activity"
+sealed class Screens : SupportAppScreen() {
 
-    fun getFlowIntent(context: Context,key:String,data:Any? = null) = when(key){
-        START_ACTIVITY -> StartActivity.newStartActivity(context)
-        ONE_ACTIVITY -> OneActivity.newStartActivity(context)
-        TWO_ACTIVITY -> TwoActivity.newStartActivity(context)
-        else -> null
+    class StartScreen : Screens(){
+        override fun getActivityIntent(context: Context): Intent {
+            return StartActivity.newStartActivity(context)
+        }
     }
+
+    class OneScreen : Screens(){
+        override fun getActivityIntent(context: Context): Intent {
+            return OneActivity.newStartActivity(context)
+        }
+
+        override fun getFragment(): Fragment {
+            return OneFragment.newInstance()
+        }
+    }
+
+    class TwoScreen : Screens(){
+
+        override fun getActivityIntent(context: Context): Intent {
+            return TwoActivity.newStartActivity(context)
+        }
+
+        override fun getFragment(): Fragment {
+            return TwoFragment.newInstance()
+        }
+    }
+
 }
