@@ -6,4 +6,8 @@
     <string name="activity_two">activity two</string>
     <string name="fragment_action">fragment action start</string>
     <string name="fragment_cancel">fragment_cancel</string>
+    <string name="title_fragment_one">title fragment one</string>
+    <string name="title_fragment_two">title fragment two</string>
+    <string name="fragment_one_start">fragment one start</string>
+    <string name="fragment_two_start">fragment two start</string>
 </resources>

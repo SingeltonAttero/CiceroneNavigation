@@ -50,17 +50,9 @@ class OneActivity : BaseActivity(), OneView {
     fun onePresenterProvider(): OnePresenter = Toothpick.openScope(DI.APP_SCOPE)
             .getInstance(OnePresenter::class.java)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        action_button_one.setOnClickListener {
-            presenter.toNewAction()
-            startActivity(Screens.StartScreen().getActivityIntent(this))
-        }
-    }
-
     //Mvp
     override fun showMessage(message: String) {
-
+        Toast.makeText(this,OneActivity::class.java.simpleName,Toast.LENGTH_SHORT).show()
     }
 
     //Mvp

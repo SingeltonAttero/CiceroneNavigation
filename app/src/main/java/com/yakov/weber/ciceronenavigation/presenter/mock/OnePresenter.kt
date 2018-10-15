@@ -12,7 +12,10 @@ import javax.inject.Inject
 @InjectViewState
 class OnePresenter @Inject constructor():MvpPresenter<OneView>() {
 
-    fun toNewAction(){
-        viewState.action("One Action")
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+        viewState.showMessage("")
     }
+
+
 }

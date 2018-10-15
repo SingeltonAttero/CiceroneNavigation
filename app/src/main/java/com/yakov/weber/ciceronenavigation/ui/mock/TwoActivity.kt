@@ -18,7 +18,6 @@ import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
-import ru.terrakok.cicerone.commands.Replace
 import toothpick.Toothpick
 import javax.inject.Inject
 
@@ -28,23 +27,14 @@ import javax.inject.Inject
  * project CiceroneNavigation */
 
 class TwoActivity : BaseActivity(), TwoView {
-    override val navigator: Navigator
-        get() = object : SupportAppNavigator(this,R.id.fragment_container_one){
-            override fun createFragment(screen: SupportAppScreen): Fragment = when (screen) {
-                is Screens.TwoScreen -> screen.fragment
-                else -> { throw IllegalArgumentException("нет такого фрагмента $screen")}
-            }
-        }
+
     companion object {
-        fun newStartActivity(context: Context): Intent = Intent(context, OneActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        }
+        fun newStartActivity(context: Context): Intent = Intent(context, TwoActivity::class.java)
     }
-    @Inject
-    lateinit var router: Router
 
     override val layout: Int
         get() = R.layout.activity_two
+
     @InjectPresenter
     lateinit var presenter: TwoPresenter
 
@@ -54,14 +44,21 @@ class TwoActivity : BaseActivity(), TwoView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ok_button_two.setOnClickListener { presenter.toForwardOne() }
+        action_button_two.setOnClickListener { presenter.toForwardTwo() }
+    }
 
-        navigator.applyCommands(arrayOf(Replace(Screens.TwoScreen())))
-
+    override val navigator: Navigator = object : SupportAppNavigator(this,R.id.fragment_container_two){
+        override fun createFragment(screen: SupportAppScreen): Fragment = when (screen) {
+            is Screens.ForwardTwoFragment -> screen.fragment
+            is Screens.ForwardOneFragment -> screen.fragment
+            else -> { throw IllegalArgumentException("нет такого фрагмента $screen")}
+        }
     }
 
     //Mvp
     override fun showMessage(message: String) {
-
+        Toast.makeText(this,TwoActivity::class.java.simpleName,Toast.LENGTH_SHORT).show()
     }
 
     //Mvp

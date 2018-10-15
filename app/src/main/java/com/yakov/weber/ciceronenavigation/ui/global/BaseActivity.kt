@@ -5,6 +5,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.yakov.weber.ciceronenavigation.toothpick.DI
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
+import timber.log.Timber
 import toothpick.Toothpick
 import javax.inject.Inject
 
@@ -23,13 +24,13 @@ abstract class BaseActivity : MvpAppCompatActivity() {
     lateinit var navigatorHolder:NavigatorHolder
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Toothpick.inject(this, Toothpick.openScope(DI.APP_SCOPE))
         super.onCreate(savedInstanceState)
         setContentView(layout)
-        Toothpick.inject(this,Toothpick.openScope(DI.APP_SCOPE))
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onResumeFragments() {
+        super.onResumeFragments()
         navigatorHolder.setNavigator(navigator)
     }
 
