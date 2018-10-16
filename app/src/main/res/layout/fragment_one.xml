@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="#79b4c7d9"
     android:layout_height="match_parent">
 
     <TextView
@@ -21,7 +22,7 @@
         android:id="@+id/button_action_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fragment_action"
+        android:text="@string/start_new_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -32,7 +33,7 @@
         android:id="@+id/button_cancel_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fragment_cancel"
+        android:text="@string/to_new_start_fragment"
         app:layout_constraintBottom_toTopOf="@+id/button_action_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

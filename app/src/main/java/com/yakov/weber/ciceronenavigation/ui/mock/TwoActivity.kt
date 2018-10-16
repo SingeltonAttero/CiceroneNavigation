@@ -15,11 +15,9 @@ import com.yakov.weber.ciceronenavigation.ui.Screens
 import com.yakov.weber.ciceronenavigation.ui.global.BaseActivity
 import kotlinx.android.synthetic.main.activity_two.*
 import ru.terrakok.cicerone.Navigator
-import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 import toothpick.Toothpick
-import javax.inject.Inject
 
 /**
  * Created on 10.10.18
@@ -51,7 +49,7 @@ class TwoActivity : BaseActivity(), TwoView {
     override val navigator: Navigator = object : SupportAppNavigator(this,R.id.fragment_container_two){
         override fun createFragment(screen: SupportAppScreen): Fragment = when (screen) {
             is Screens.ForwardTwoFragment -> screen.fragment
-            is Screens.ForwardOneFragment -> screen.fragment
+            is Screens.ForwardOneFlowFragment -> screen.fragment
             else -> { throw IllegalArgumentException("нет такого фрагмента $screen")}
         }
     }

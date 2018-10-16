@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v4.app.Fragment
 import com.yakov.weber.ciceronenavigation.ui.basics.StartActivity
 import com.yakov.weber.ciceronenavigation.ui.mock.OneActivity
+import com.yakov.weber.ciceronenavigation.ui.mock.OneFlowFragment
 import com.yakov.weber.ciceronenavigation.ui.mock.OneFragment
 import com.yakov.weber.ciceronenavigation.ui.mock.TwoActivity
 import com.yakov.weber.ciceronenavigation.ui.mock.TwoFragment
@@ -18,9 +19,15 @@ sealed class Screens : SupportAppScreen() {
         }
     }
 
-    class ForwardOneFragment : Screens() {
+    class ForwardOneFlowFragment : Screens() {
         override fun getFragment(): Fragment {
-            return OneFragment.newInstance()
+            return OneFlowFragment.newInstance()
+        }
+    }
+
+    class ForwardOneFragment : Screens(){
+        override fun getFragment(): Fragment {
+            return OneFragment()
         }
     }
 

@@ -10,4 +10,6 @@
     <string name="title_fragment_two">title fragment two</string>
     <string name="fragment_one_start">fragment one start</string>
     <string name="fragment_two_start">fragment two start</string>
+    <string name="start_new_fragment">start new fragment</string>
+    <string name="to_new_start_fragment">to new start fragment</string>
 </resources>
