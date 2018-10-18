@@ -19,9 +19,9 @@ import javax.inject.Inject
  * @author YWeber
  * project CiceroneNavigation */
 
-abstract class BaseFlowFragment : MvpAppCompatFragment() {
+abstract class BaseFlowFragment : BaseFragment() {
 
-    private val layoutRes:Int
+    override val layoutRes:Int
     get() = R.layout.layout_container
 
     private val currentFragment
@@ -50,7 +50,7 @@ abstract class BaseFlowFragment : MvpAppCompatFragment() {
 
     open fun onExit(){}
 
-    open fun onBackPressed(){
+    override fun onBackPressed(){
         currentFragment?.onBackPressed()
     }
 

@@ -10,15 +10,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.yakov.weber.ciceronenavigation.ui.basics.StartActivity">
+        <activity android:name="com.yakov.weber.ciceronenavigation.ui.AppActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.mock.OneActivity" />
-        <activity android:name=".ui.mock.TwoActivity" />
     </application>
 
 </manifest>

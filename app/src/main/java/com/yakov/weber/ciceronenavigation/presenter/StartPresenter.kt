@@ -1,4 +1,4 @@
-package com.yakov.weber.ciceronenavigation.presenter.basics
+package com.yakov.weber.ciceronenavigation.presenter
 
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
@@ -15,12 +15,9 @@ import javax.inject.Inject
 @InjectViewState
 class StartPresenter @Inject constructor(private val resManager: ResManager,
                                          private val router: Router): MvpPresenter<StartView>() {
-
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
-        router.newRootScreen(Screens.ForwardOneFlowFragment())
+    fun startApp(){
+        val rootScreen = Screens.AuthFlow
+        router.newRootScreen(rootScreen)
     }
 
-    fun startOne() = router.navigateTo(Screens.ForwardOneFlowFragment())
-    fun startTwo() = router.replaceScreen(Screens.ForwardTwoFragment())
 }

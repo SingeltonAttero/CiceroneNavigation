@@ -17,11 +17,11 @@ import toothpick.config.Module
 class AppModule (context:Context) : Module() {
 
     init {
-        Timber.d("Common Inject")
+        Timber.e("Common Inject")
         bind(Context::class.java).toInstance(context)
         bind(ResManager::class.java).singletonInScope()
 
-        Timber.d("Navigation Inject")
+        Timber.e("Navigation Inject")
         val cicerone = Cicerone.create()
         bind(Router::class.java).toInstance(cicerone.router)
         bind(NavigatorHolder::class.java).toInstance(cicerone.navigatorHolder)

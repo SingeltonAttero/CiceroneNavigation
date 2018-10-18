@@ -14,7 +14,7 @@ import toothpick.config.Module
 
 class FlowNavigationModule(globalRouter: Router) : Module() {
     init {
-        Timber.d("Navigation Inject")
+        Timber.e("Flow navigation Inject")
         val cicerone = Cicerone.create(FlowRouter(globalRouter))
         bind(FlowRouter::class.java).toInstance(cicerone.router)
         bind(NavigatorHolder::class.java).toInstance(cicerone.navigatorHolder)

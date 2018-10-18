@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.basics.StartActivity">
+    tools:context=".ui.AppActivity">
 
     <Button
         android:id="@+id/button_activity_one"

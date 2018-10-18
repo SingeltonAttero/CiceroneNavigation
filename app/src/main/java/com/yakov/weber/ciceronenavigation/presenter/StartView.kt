@@ -1,4 +1,4 @@
-package com.yakov.weber.ciceronenavigation.presenter.basics
+package com.yakov.weber.ciceronenavigation.presenter
 
 import com.arellomobile.mvp.MvpView
 

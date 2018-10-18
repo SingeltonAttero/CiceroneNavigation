@@ -12,4 +12,10 @@
     <string name="fragment_two_start">fragment two start</string>
     <string name="start_new_fragment">start new fragment</string>
     <string name="to_new_start_fragment">to new start fragment</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="sing_in">Sing in</string>
+    <string name="help">help</string>
+    <string name="login_incorrect">Login incorrect</string>
+    <string name="password_incorrect">Password incorrect</string>
 </resources>

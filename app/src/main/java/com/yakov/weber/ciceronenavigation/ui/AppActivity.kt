@@ -1,27 +1,19 @@
-package com.yakov.weber.ciceronenavigation.ui.basics
+package com.yakov.weber.ciceronenavigation.ui
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
-import android.widget.Toast
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.yakov.weber.ciceronenavigation.R
-import com.yakov.weber.ciceronenavigation.presenter.basics.StartPresenter
-import com.yakov.weber.ciceronenavigation.presenter.basics.StartView
+import com.yakov.weber.ciceronenavigation.presenter.StartPresenter
+import com.yakov.weber.ciceronenavigation.presenter.StartView
 import com.yakov.weber.ciceronenavigation.toothpick.DI
-import com.yakov.weber.ciceronenavigation.ui.Screens
-import com.yakov.weber.ciceronenavigation.ui.global.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.android.pure.AppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
-import ru.terrakok.cicerone.commands.Forward
 import toothpick.Toothpick
 import javax.inject.Inject
 
@@ -30,13 +22,7 @@ import javax.inject.Inject
  * @author YWeber
  * project CiceroneNavigation */
 
-class StartActivity : MvpAppCompatActivity(), StartView {
-    companion object {
-        fun newStartActivity(context: Context): Intent = Intent(context, StartActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-    }
-
+class AppActivity : MvpAppCompatActivity(), StartView {
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
@@ -48,7 +34,7 @@ class StartActivity : MvpAppCompatActivity(), StartView {
             .getInstance(StartPresenter::class.java)
 
     private val layout: Int
-        get() = R.layout.activity_main
+        get() = R.layout.activity_app
 
     private val navigator: Navigator
         get() = object : SupportAppNavigator(this,supportFragmentManager,R.id.fragment_container_start){
@@ -64,8 +50,7 @@ class StartActivity : MvpAppCompatActivity(), StartView {
         Toothpick.inject(this,Toothpick.openScope(DI.APP_SCOPE))
         super.onCreate(savedInstanceState)
         setContentView(layout)
-        button_activity_one.setOnClickListener { presenter.startOne() }
-        button_activity_two.setOnClickListener { presenter.startTwo() }
+        presenter.startApp()
     }
 
     override fun showMessage(message: String) {
