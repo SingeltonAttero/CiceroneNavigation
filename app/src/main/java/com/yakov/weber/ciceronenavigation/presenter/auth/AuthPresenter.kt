@@ -4,10 +4,11 @@ import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.yakov.weber.ciceronenavigation.R
 import com.yakov.weber.ciceronenavigation.model.flow.FlowRouter
+import com.yakov.weber.ciceronenavigation.toothpick.DI
 import com.yakov.weber.ciceronenavigation.toothpick.system.ResManager
 import com.yakov.weber.ciceronenavigation.ui.Screens
+import toothpick.Toothpick
 import javax.inject.Inject
-import kotlin.math.log
 
 /**
  * Created on 18.10.18
@@ -19,7 +20,7 @@ class AuthPresenter @Inject constructor(private val router: FlowRouter,
                                         private val resourceManager: ResManager) : MvpPresenter<AuthView>() {
 
     fun nextFlow(){
-        router.navigateTo(Screens.Auth)
+        router.newRootFlow(Screens.AboutFlow)
     }
 
     fun connectMock(login:String,password:String){
@@ -30,5 +31,10 @@ class AuthPresenter @Inject constructor(private val router: FlowRouter,
         }
     }
 
-    fun onBackPressed() = router.exit()
+    override fun onDestroy() {
+        super.onDestroy()
+        Toothpick.closeScope(DI.AUTH_FLOW_SCOPE)
+    }
+
+    fun onBackPressed() = router.backTo(Screens.Auth)
 }

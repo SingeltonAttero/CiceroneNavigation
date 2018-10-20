@@ -43,6 +43,10 @@ class AuthFragment : BaseFragment(), AuthView {
 
     }
 
+    override fun onBackPressed() {
+        presenter.onBackPressed()
+    }
+
     //Mvp
     override fun showError(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()

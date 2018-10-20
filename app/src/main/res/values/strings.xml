@@ -18,4 +18,9 @@
     <string name="help">help</string>
     <string name="login_incorrect">Login incorrect</string>
     <string name="password_incorrect">Password incorrect</string>
+    <string name="polyrhachis_browni">Polyrhachis browni</string>
+    <string name="text_help">Длина тела рабочих особей — 8,87—9,47 мм, ширина головы — 1,67—1,78 мм (длина — 2,28—2,43 мм), длина скапуса (SL) — 2,93—3,06 мм. Основная окраска тела чёрная (апикальные членики жгутика усика и коготки лапок светлее, красновато-коричневые). На переднеспинке два крупных плечевых шипа, направленных вперёд. На петиоле также два длинных шипа, направленных вверх и назад, а также два коротких боковых шипика. Соотношение длины скапуса усиков к ширине головы (индекс скапуса, SI=SL/HW × 100) — 172—178. Соотношение ширины и длины головы (CI) у рабочих — 71—74. Ширина петиоля (PTW) — 1,26-1,41 мм, длина средней голени (MTL) — 3,43-3,73 мм. Таксон относится к подроду Myrma и группе видов Polyrhachis (Myrma) relucens species group. Вид был впервые описан в 2008 году австралийским мирмекологом Рудольфом Кохоутом (Rudolf J. Kohout; Queensland Museum, Брисбен, Австралия). Видовое название дано в честь американского мирмеколога Уильяма Брауна (W.L. Brown), собравшего типовые экземпляры</string>
+    <string name="start_left">start left</string>
+    <string name="start_right">start right</string>
+    <string name="swap"><![CDATA[<-- swap -->]]></string>
 </resources>

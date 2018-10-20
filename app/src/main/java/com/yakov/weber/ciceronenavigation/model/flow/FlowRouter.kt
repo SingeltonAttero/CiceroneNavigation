@@ -11,6 +11,6 @@ import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 class FlowRouter (private val appRouter: Router) : Router() {
     fun startFlow(screens: SupportAppScreen) = appRouter.navigateTo(screens)
-    fun newRootScreen(screens: SupportAppScreen) = appRouter.newRootScreen(screens)
+    fun newRootFlow(screens: SupportAppScreen) = appRouter.newRootScreen(screens)
     fun finishFlow() = appRouter.exit()
 }

@@ -39,11 +39,6 @@ class AuthFlowFragment : BaseFlowFragment(),MvpView {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(activity, this::class.java.simpleName,Toast.LENGTH_SHORT).show()
-    }
-
     private fun initScope(){
         val scope = Toothpick.openScopes(DI.APP_SCOPE,DI.AUTH_FLOW_SCOPE)
         scope.installModules(FlowNavigationModule(scope.getInstance(Router::class.java)))
