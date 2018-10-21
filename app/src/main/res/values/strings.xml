@@ -23,4 +23,5 @@
     <string name="start_left">start left</string>
     <string name="start_right">start right</string>
     <string name="swap"><![CDATA[<-- swap -->]]></string>
+    <string name="properties">properties</string>
 </resources>

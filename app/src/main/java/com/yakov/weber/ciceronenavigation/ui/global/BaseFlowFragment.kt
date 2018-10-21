@@ -25,7 +25,7 @@ abstract class BaseFlowFragment : BaseFragment() {
     get() = R.layout.layout_container
 
     private val currentFragment
-    get() = childFragmentManager.findFragmentById(R.id.app_container) as? BaseFlowFragment
+    get() = childFragmentManager.findFragmentById(R.id.app_container) as? BaseFragment
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
