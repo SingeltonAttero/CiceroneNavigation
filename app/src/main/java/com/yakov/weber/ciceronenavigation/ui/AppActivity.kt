@@ -4,7 +4,11 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.yakov.weber.ciceronenavigation.R
+import com.yakov.weber.ciceronenavigation.presenter.AppPresenter
+import com.yakov.weber.ciceronenavigation.presenter.AppView
 import com.yakov.weber.ciceronenavigation.toothpick.DI
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
@@ -18,9 +22,17 @@ import javax.inject.Inject
  * @author YWeber
  * project CiceroneNavigation */
 
-class AppActivity : MvpAppCompatActivity(){
+class AppActivity : MvpAppCompatActivity(),AppView{
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
+
+    @InjectPresenter
+    lateinit var presenter:AppPresenter
+
+    @ProvidePresenter
+    fun providerPresenter(): AppPresenter = Toothpick
+            .openScope(DI.APP_SCOPE)
+            .getInstance(AppPresenter::class.java)
 
     private val layout: Int
         get() = R.layout.activity_app

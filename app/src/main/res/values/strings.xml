@@ -24,4 +24,8 @@
     <string name="start_right">start right</string>
     <string name="swap"><![CDATA[<-- swap -->]]></string>
     <string name="properties">properties</string>
+    <string name="start">начать</string>
+    <string name="new_start">еще</string>
+    <string name="mock_one_text">фрагмент фото</string>
+    <string name="mock_two_text">фрагмен с данными</string>
 </resources>
