@@ -10,6 +10,7 @@ import com.yakov.weber.ciceronenavigation.R
 import com.yakov.weber.ciceronenavigation.presenter.AppPresenter
 import com.yakov.weber.ciceronenavigation.presenter.AppView
 import com.yakov.weber.ciceronenavigation.toothpick.DI
+import com.yakov.weber.ciceronenavigation.toothpick.qualifier.GlobalNavigation
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
@@ -23,6 +24,7 @@ import javax.inject.Inject
  * project CiceroneNavigation */
 
 class AppActivity : MvpAppCompatActivity(),AppView{
+
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
@@ -53,13 +55,14 @@ class AppActivity : MvpAppCompatActivity(),AppView{
         setContentView(layout)
     }
 
-    override fun onResumeFragments() {
-        super.onResumeFragments()
+    override fun onResume() {
+        super.onResume()
         navigatorHolder.setNavigator(navigator)
     }
 
     override fun onPause() {
-        super.onPause()
         navigatorHolder.removeNavigator()
+        super.onPause()
+
     }
 }

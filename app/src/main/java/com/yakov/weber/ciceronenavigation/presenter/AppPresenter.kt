@@ -14,6 +14,6 @@ import javax.inject.Inject
 class AppPresenter @Inject constructor(private val router: Router) : MvpPresenter<AppView>() {
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        router.newRootScreen(Screens.StartFlow)
+        router.newRootScreen(Screens.Group)
     }
 }

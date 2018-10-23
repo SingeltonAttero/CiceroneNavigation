@@ -1,6 +1,7 @@
 package com.yakov.weber.ciceronenavigation.toothpick.module
 
 import android.content.Context
+import com.yakov.weber.ciceronenavigation.toothpick.qualifier.GlobalNavigation
 import com.yakov.weber.ciceronenavigation.toothpick.system.ResManager
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.Navigator

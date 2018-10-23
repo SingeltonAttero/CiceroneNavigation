@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.yakov.weber.ciceronenavigation.R
+import com.yakov.weber.ciceronenavigation.toothpick.qualifier.InnerNavigation
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
@@ -28,6 +29,7 @@ abstract class BaseFlowFragment : BaseFragment() {
     get() = childFragmentManager.findFragmentById(R.id.app_container) as? BaseFragment
 
     @Inject
+    @InnerNavigation
     lateinit var navigatorHolder: NavigatorHolder
 
     protected val navigator:Navigator by lazy {

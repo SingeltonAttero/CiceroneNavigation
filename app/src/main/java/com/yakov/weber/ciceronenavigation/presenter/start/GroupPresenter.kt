@@ -13,7 +13,6 @@ import javax.inject.Inject
 
 @InjectViewState
 class GroupPresenter @Inject constructor(private val flowRouter: FlowRouter): MvpPresenter<GroupView>(){
-
         fun startOneFragment() = flowRouter.startFlow(Screens.MockOne)
         fun startTwoFragment() = flowRouter.startFlow(Screens.MockTwo)
 

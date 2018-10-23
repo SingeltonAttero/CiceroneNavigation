@@ -13,15 +13,14 @@ import com.yakov.weber.ciceronenavigation.presenter.start.GroupPresenter
 import com.yakov.weber.ciceronenavigation.presenter.start.GroupView
 import com.yakov.weber.ciceronenavigation.toothpick.DI
 import com.yakov.weber.ciceronenavigation.toothpick.module.FlowNavigationModule
+import com.yakov.weber.ciceronenavigation.toothpick.qualifier.InnerNavigation
 import com.yakov.weber.ciceronenavigation.ui.global.BaseFragment
 import kotlinx.android.synthetic.main.fragment_group.*
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
-import ru.terrakok.cicerone.Screen
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import ru.terrakok.cicerone.commands.Command
 import toothpick.Toothpick
-import java.security.acl.Group
 import javax.inject.Inject
 
 /**
@@ -35,17 +34,18 @@ class GroupFlowFragment : BaseFragment(), GroupView {
         get() = R.layout.fragment_group
 
     @InjectPresenter
-    lateinit var presenter:GroupPresenter
+    lateinit var presenter: GroupPresenter
+
     @ProvidePresenter
     fun providerPresenter(): GroupPresenter = Toothpick.openScope(DI.GROUP_SCOPE)
             .getInstance(GroupPresenter::class.java)
 
     @Inject
-    lateinit var navigatorHolder:NavigatorHolder
+    @InnerNavigation
+    lateinit var navigatorHolder: NavigatorHolder
 
     private val navigator by lazy {
-        object : SupportAppNavigator(this.activity,childFragmentManager,R.id.group_container){
-
+        object : SupportAppNavigator(this.activity, childFragmentManager, R.id.group_container) {
             override fun setupFragmentTransaction(command: Command?,
                                                   currentFragment: Fragment?,
                                                   nextFragment: Fragment?,
@@ -65,15 +65,15 @@ class GroupFlowFragment : BaseFragment(), GroupView {
     override fun onCreate(savedInstanceState: Bundle?) {
         initScope()
         super.onCreate(savedInstanceState)
-        if (childFragmentManager.fragments.isEmpty()){
+        if (childFragmentManager.fragments.isEmpty()) {
             navigator.setLaunchScreen(Screens.MockOne)
         }
     }
 
     private fun initScope() {
-        val scope = Toothpick.openScopes(DI.APP_SCOPE,DI.GROUP_SCOPE)
+        val scope = Toothpick.openScopes(DI.APP_SCOPE, DI.GROUP_SCOPE)
         scope.installModules(FlowNavigationModule(scope.getInstance(Router::class.java)))
-        Toothpick.inject(this,scope)
+        Toothpick.inject(this@GroupFlowFragment, scope)
     }
 
     override fun onResume() {
