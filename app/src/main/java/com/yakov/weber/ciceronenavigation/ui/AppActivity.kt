@@ -11,6 +11,7 @@ import com.yakov.weber.ciceronenavigation.presenter.AppPresenter
 import com.yakov.weber.ciceronenavigation.presenter.AppView
 import com.yakov.weber.ciceronenavigation.toothpick.DI
 import com.yakov.weber.ciceronenavigation.toothpick.qualifier.GlobalNavigation
+import kotlinx.android.synthetic.main.toolbar.*
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
@@ -53,6 +54,7 @@ class AppActivity : MvpAppCompatActivity(),AppView{
         Toothpick.inject(this,Toothpick.openScope(DI.APP_SCOPE))
         super.onCreate(savedInstanceState)
         setContentView(layout)
+        setSupportActionBar(toolbar)
     }
 
     override fun onResume() {

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction
 import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
+import com.jakewharton.rxbinding2.support.design.widget.RxBottomNavigationView
 import com.yakov.weber.ciceronenavigation.R
 import com.yakov.weber.ciceronenavigation.Screens
 import com.yakov.weber.ciceronenavigation.extention.setLaunchScreen
@@ -44,8 +45,15 @@ class GroupFlowFragment : BaseFragment(), GroupView {
     @InnerNavigation
     lateinit var navigatorHolder: NavigatorHolder
 
+    private val currentFragment get() = childFragmentManager.findFragmentById(R.id.group_container) as? BaseFragment
+
     private val navigator by lazy {
         object : SupportAppNavigator(this.activity, childFragmentManager, R.id.group_container) {
+
+            override fun activityBack() {
+                onBackPressed()
+            }
+
             override fun setupFragmentTransaction(command: Command?,
                                                   currentFragment: Fragment?,
                                                   nextFragment: Fragment?,
@@ -58,15 +66,30 @@ class GroupFlowFragment : BaseFragment(), GroupView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        start_button.setOnClickListener { presenter.startOneFragment() }
-        new_start_button.setOnClickListener { presenter.startTwoFragment() }
+        RxBottomNavigationView
+                .itemSelections(bottom_navigation)
+                .subscribe ({
+                    when (it.itemId) {
+                        R.id.navigation_person -> {
+                            presenter.goToPerson()
+                        }
+                        R.id.navigation_race -> {
+                            presenter.goToRace()
+                        }
+                        R.id.navigation_story -> {
+                            presenter.goToStory()
+                        }
+                    }
+                },{
+                    it.printStackTrace()
+                }).bind()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initScope()
         super.onCreate(savedInstanceState)
         if (childFragmentManager.fragments.isEmpty()) {
-            navigator.setLaunchScreen(Screens.MockOne)
+            navigator.setLaunchScreen(Screens.Race(getString(R.string.story_race)))
         }
     }
 
@@ -86,5 +109,7 @@ class GroupFlowFragment : BaseFragment(), GroupView {
         navigatorHolder.removeNavigator()
     }
 
-
+    override fun onBackPressed() {
+        presenter.exit()
+    }
 }

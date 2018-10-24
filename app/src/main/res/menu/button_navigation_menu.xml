@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/navigation_race"
+        android:icon="@drawable/ic_race_24dp"
+        android:title="@string/story_race"
+        />
+    <item android:id="@+id/navigation_story"
+        android:icon="@drawable/ic_story_24dp"
+        android:title="@string/story"
+        />
+    <item android:id="@+id/navigation_person"
+        android:icon="@drawable/ic_person_24dp"
+        android:title="@string/person"
+        />
+
+</menu>
