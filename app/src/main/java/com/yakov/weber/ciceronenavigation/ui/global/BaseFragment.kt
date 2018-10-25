@@ -20,9 +20,10 @@ abstract class BaseFragment : MvpAppCompatFragment() {
 
     protected val toolbar by lazy {   (activity as MvpAppCompatActivity).supportActionBar!! }
 
-    private val disposable:CompositeDisposable by lazy { CompositeDisposable() }
+    private val disposable: CompositeDisposable by lazy { CompositeDisposable() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
         return inflater.inflate(layoutRes,container,false)
     }
 

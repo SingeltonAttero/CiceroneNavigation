@@ -32,6 +32,7 @@ class StartFlowFragment : BaseFlowFragment() {
         Toothpick.inject(this,scope)
     }
 
+
     override fun onDestroy() {
         Toothpick.closeScope(DI.START_SCOPE)
         super.onDestroy()

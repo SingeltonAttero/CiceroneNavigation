@@ -15,13 +15,14 @@ import javax.inject.Inject
 
 @InjectViewState
 class GroupPresenter @Inject constructor(private val flowRouter: FlowRouter,
-                                         private val resManager: ResManager): MvpPresenter<GroupView>(){
+                                         private val resManager: ResManager) : MvpPresenter<GroupView>() {
 
-        fun goToPerson() = flowRouter.replaceScreen(Screens.Person(resManager.getString(R.string.person)))
-        fun goToStory() = flowRouter.replaceScreen(Screens.Story(resManager.getString(R.string.story)))
-        fun goToRace() = flowRouter.replaceScreen(Screens.Race(resManager.getString(R.string.story_race)))
+    fun goToPerson() = flowRouter.startFlow(Screens.Person(resManager.getString(R.string.person)))
+    fun goToStory() = flowRouter.startFlow(Screens.Story(resManager.getString(R.string.story)))
+    fun goToRace() = flowRouter.startFlow(Screens.Race(resManager.getString(R.string.story_race)))
 
-        fun exit() = flowRouter.backTo(Screens.MockOne)
+
+    fun exit() = flowRouter.backTo(Screens.MockOne)
 
 
 }

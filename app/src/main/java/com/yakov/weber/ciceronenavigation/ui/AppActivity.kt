@@ -3,6 +3,9 @@ package com.yakov.weber.ciceronenavigation.ui
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -12,6 +15,8 @@ import com.yakov.weber.ciceronenavigation.presenter.AppView
 import com.yakov.weber.ciceronenavigation.toothpick.DI
 import com.yakov.weber.ciceronenavigation.toothpick.qualifier.GlobalNavigation
 import kotlinx.android.synthetic.main.toolbar.*
+import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.toast
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
@@ -55,6 +60,7 @@ class AppActivity : MvpAppCompatActivity(),AppView{
         super.onCreate(savedInstanceState)
         setContentView(layout)
         setSupportActionBar(toolbar)
+
     }
 
     override fun onResume() {

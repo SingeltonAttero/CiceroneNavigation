@@ -16,7 +16,11 @@ import com.yakov.weber.ciceronenavigation.toothpick.DI
 import com.yakov.weber.ciceronenavigation.toothpick.module.FlowNavigationModule
 import com.yakov.weber.ciceronenavigation.toothpick.qualifier.InnerNavigation
 import com.yakov.weber.ciceronenavigation.ui.global.BaseFragment
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_group.*
+import org.jetbrains.anko.support.v4.toast
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
@@ -44,7 +48,6 @@ class GroupFlowFragment : BaseFragment(), GroupView {
     @Inject
     @InnerNavigation
     lateinit var navigatorHolder: NavigatorHolder
-
     private val currentFragment get() = childFragmentManager.findFragmentById(R.id.group_container) as? BaseFragment
 
     private val navigator by lazy {
@@ -68,6 +71,7 @@ class GroupFlowFragment : BaseFragment(), GroupView {
         super.onViewCreated(view, savedInstanceState)
         RxBottomNavigationView
                 .itemSelections(bottom_navigation)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe ({
                     when (it.itemId) {
                         R.id.navigation_person -> {
@@ -99,6 +103,11 @@ class GroupFlowFragment : BaseFragment(), GroupView {
         Toothpick.inject(this@GroupFlowFragment, scope)
     }
 
+    override fun showToast(message: String) {
+        toast(message)
+    }
+
+
     override fun onResume() {
         super.onResume()
         navigatorHolder.setNavigator(navigator)
@@ -112,4 +121,7 @@ class GroupFlowFragment : BaseFragment(), GroupView {
     override fun onBackPressed() {
         presenter.exit()
     }
+
+
+
 }

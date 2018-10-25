@@ -3,6 +3,7 @@ package com.yakov.weber.ciceronenavigation.presenter
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.yakov.weber.ciceronenavigation.Screens
+import com.yakov.weber.ciceronenavigation.toothpick.qualifier.GlobalNavigation
 import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 

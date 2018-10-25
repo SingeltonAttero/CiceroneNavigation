@@ -7,4 +7,6 @@ import com.arellomobile.mvp.MvpView
  * @author YWeber
  * project CiceroneNavigation */
 
-interface GroupView : MvpView
+interface GroupView : MvpView{
+    fun showToast(message:String)
+}

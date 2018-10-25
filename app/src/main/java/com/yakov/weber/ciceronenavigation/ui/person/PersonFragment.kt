@@ -5,6 +5,7 @@ import android.view.View
 import com.yakov.weber.ciceronenavigation.R
 import com.yakov.weber.ciceronenavigation.ui.global.BaseFragment
 import kotlinx.android.synthetic.main.fragment_person.*
+import timber.log.Timber
 
 /**
  * Created on 25.10.18
@@ -12,6 +13,11 @@ import kotlinx.android.synthetic.main.fragment_person.*
  * project CiceroneNavigation */
 
 class PersonFragment : BaseFragment() {
+
+    init {
+        Timber.e(this::class.java.simpleName)
+    }
+
     override val layoutRes: Int
         get() = R.layout.fragment_person
     companion object {
